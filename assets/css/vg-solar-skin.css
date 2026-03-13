@@ -1,0 +1,85 @@
+/**
+ * SOLAR COMMANDER - HUD SKIN v3.2 (OPEN SOURCE EDITION)
+ * -------------------------------------------------------------------------
+ * ARCHITEKTUR: Kognitives HUD-Design für Solar-Telemetrie
+ * KOMPATIBILITÄT: Eigenständig (Google Fonts Integration)
+ * -------------------------------------------------------------------------
+ */
+
+/* --- EXTERNAL ASSETS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* HUD ROOT CONTAINER */
+#vg-solar-command {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #02040a;
+    color: #e2e8f0;
+    --vgt-orange: #ff7b00;
+    --vgt-cyan: #00f0ff;
+    --vgt-purple: #bd00ff;
+    --vgt-alert: #ef4444;
+}
+
+/* TYPOGRAPHY */
+#vg-solar-command h1, 
+#vg-solar-command h2, 
+#vg-solar-command .hud-title {
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#vg-solar-command .data-mono,
+#vg-solar-command code {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* HUD LAYOUT COMPONENTS */
+#vg-solar-command .hud-panel {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+#vg-solar-command .hud-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--vgt-orange), transparent);
+    opacity: 0.3;
+}
+
+/* SCANLINE EFFECT */
+#vg-solar-command .scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(255, 123, 0, 0.02) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* DATA VISUALS */
+#vg-solar-command .text-glow-orange { text-shadow: 0 0 10px rgba(255, 123, 0, 0.5); }
+#vg-solar-command .text-glow-cyan { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+#vg-solar-command .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+#vg-solar-command .dot-online { background: #10b981; box-shadow: 0 0 8px #10b981; }
+#vg-solar-command .dot-alert { background: var(--vgt-alert); box-shadow: 0 0 8px var(--vgt-alert); animation: vgt-pulse 2s infinite; }
+
+@keyframes vgt-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* SCROLLBAR */
+#vg-solar-command ::-webkit-scrollbar { width: 4px; }
+#vg-solar-command ::-webkit-scrollbar-thumb { background: rgba(255, 123, 0, 0.2); border-radius: 2px; }
